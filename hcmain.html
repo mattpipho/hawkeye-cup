@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="hawkeyecup.css" />
+<link rel="stylesheet" href="themes/hawkeyecup.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+
+<div data-role="page" id="pageone">
+  <div data-role="header">
+  <div class="mainHeading"><a href="#"><img id="mainlogo" src="hawkeye.png" /></a></div>
+	   <div data-role="navbar">
+	    <ul>
+	      <li><a href="#" class="ui-btn-active">Entry</a></li>
+	      <li><a href="#">Scorecard</a></li>
+	      <li><a href="#">Standings</a></li>
+	    </ul>
+	  </div>
+  </div>
+
+  <div data-role="main" class="ui-content">
+ 	<div id="roundInfo">Day 1 - Eagle Creek</div>
+ 	
+  	<div>
+  <table id="scoreEntryTable" class="myTable">
+		<thead>
+			<tr>
+				<th>Golfer</th>
+         <th>Score</th>
+         <th>Bump</th>
+         <th class="scoreBreakpoint">Round Total</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td>Delagardelle<br></td>
+         <td><select name="select-custom-1" id="select-custom-1" data-native-menu="false" data-mini="true">
+				        <option value="">Enter Score</option>
+				        <option value="1">1 - Ace</option>
+				        <option value="2">2 - Eagle</option>
+				        <option value="3">3 - Birdie</option>
+				        <option value="4">4 - Par</option>
+				        <option value="4">5 - Bogey</option>
+				        <option value="4">6 - Double</option>
+				        <option value="4">7 - Triple</option>
+				        <option value="4">8 - Quad</option>
+				    </select>
+				 </td>
+         <td></td>
+         <td class="scoreBreakpoint">+2</td>
+       </tr>
+       <tr>
+         <td>Pipho</td>
+         <td><select name="select-custom-2" id="select-custom-2" data-native-menu="false" data-mini="true">
+				        <option value="">Enter Score</option>
+				        <option value="1">1 - Ace</option>
+				        <option value="2">2 - Eagle</option>
+				        <option value="3">3 - Birdie</option>
+				        <option value="4">4 - Par</option>
+				        <option value="4">5 - Bogey</option>
+				        <option value="4">6 - Double</option>
+				        <option value="4">7 - Triple</option>
+				        <option value="4">8 - Quad</option>
+				    </select>
+				 </td>
+         <td>1</td>
+         <td class="scoreBreakpoint">+5</td>
+       <tr>
+         <td>Buhrow</td>
+         <td><select name="select-custom-3" id="select-custom-3" data-native-menu="false" data-mini="true">
+				        <option value="">Enter Score</option>
+				        <option value="1">1 - Ace</option>
+				        <option value="2">2 - Eagle</option>
+				        <option value="3">3 - Birdie</option>
+				        <option value="4">4 - Par</option>
+				        <option value="4">5 - Bogey</option>
+				        <option value="4">6 - Double</option>
+				        <option value="4">7 - Triple</option>
+				        <option value="4">8 - Quad</option>
+				    </select>
+				 </td>
+         <td>1</td>
+         <td class="scoreBreakpoint">+3</td>
+       </tr>
+       <tr>
+         <td>Spahn</td>
+         <td><select name="select-custom-4" id="select-custom-4" data-native-menu="false" data-mini="true">
+				        <option value="">Entry Score</option>
+				        <option value="1">1 - Ace</option>
+				        <option value="2">2 - Eagle</option>
+				        <option value="3">3 - Birdie</option>
+				        <option value="4" selected>4 - Par</option>
+				        <option value="4">5 - Bogey</option>
+				        <option value="4">6 - Double</option>
+				        <option value="4">7 - Triple</option>
+				        <option value="4">8 - Quad</option>
+				    </select>
+				 </td>
+         <td>1</td>
+         <td class="scoreBreakpoint">+3</td>
+       
+     </tbody>
+   </table></div>
+
+<fieldset class="ui-grid-b">
+  <div class="ui-block-a"><button type="submit" data-theme="a" data-icon="arrow-l" ><span class="btnHole">Hole 3</span><br><span class="btnPar">Par 3</span></button></div>
+  <div class="ui-block-b"><button type="submit" data-theme="a"  class="ui-btn-active">Hole 4<br><span class="btnPar">Par 4</span></button></div>
+  <div class="ui-block-c"><button type="submit" data-theme="a" data-icon="arrow-r" data-iconpos="right"><span class="btnHole">Hole 5</span><br><span class="btnPar">Par 5</span></button></div>
+</fieldset>
+
+
+  </div>
+
+  <div data-role="footer">
+  <h1></h1>
+  </div>
+</div> 
+
+</body>
+</html>

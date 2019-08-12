@@ -1,0 +1,431 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Big10 FF - Scores</title>
+    <link rel="stylesheet" href="app.css"> 
+ 
+<SCRIPT LANGUAGE="JavaScript">
+function showWeek(NewYear,NewWeek) {
+   document.WeekSelection.ViewWeek.value = NewWeek;
+   document.WeekSelection.ViewYear.value = NewYear;
+   document.WeekSelection.submit();
+}
+</SCRIPT>
+
+  </head>
+
+<body>
+<SCRIPT LANGUAGE="JavaScript">
+function logout() {
+	 document.frmMenu.userAction.value = 'logout';
+   document.frmMenu.submit();
+}
+</SCRIPT>	
+	<div id="navcontainer_login">
+		<a href="login.php">Login</a>		
+	</div>
+  <div id="mainheader">
+    <div><a href="/"><img id="mainlogo" src="hawkeye.png" /></a></div>
+  </div>
+	<div id="navcontainer">
+		<ul id="navlist">
+			<li><a href="SetLineup.php">Lineup</a></li>
+			<li><a href="ScheduleResults.php">Scores</a></li>
+			<li><a href="Standings.php">Standings</a></li>
+			<div class="show-for-mid-up">
+			<li><a href="MessageBoard.php">Message Board</a></li>
+    		<li><a href="Records.php">Records</a></li>
+			</div>
+		</ul>
+	</div>
+	
+
+
+
+
+
+<!--START BODY-->
+<table align=center border=0 width=100%>
+ <tr>
+  <td valign=top>
+    <table width=100% border=0 cellspacing=2 cellpadding=2>
+     <tr>
+      <td align=center><b><u><font size=4>Scores</font></u></b></td>
+     </tr>
+     <tr>
+      <td align=center><form name=WeekSelection method=post action=ScheduleResults.php>
+          <input name=ViewWeek value=13 type=hidden>
+          <input name=ViewYear value=2015 type=hidden>
+     
+          <b>Year:&nbsp</b>
+      	<select id="yearSelection" name="yearSelection" onChange="showWeek(this.value,13);">
+      	
+
+   				<option selected="selected" value="2015"  >2015</option>     
+
+   				<option  value="2014"  >2014</option>     
+
+   				<option  value="2013"  >2013</option>     
+
+   				<option  value="2012"  >2012</option>     
+
+   				<option  value="2011"  >2011</option>     
+
+   				<option  value="2010"  >2010</option>     
+
+   				<option  value="2009"  >2009</option>     
+
+   				<option  value="2008"  >2008</option>     
+
+   				<option  value="2007"  >2007</option>     
+
+   				<option  value="2006"  >2006</option>     
+
+   				<option  value="2005"  >2005</option>     
+      	
+      	</select>
+
+<!-- 9 Week Regular Season -->
+
+<b>&nbsp&nbspWeek:&nbsp </b>         	
+ 
+<a onclick="showWeek(2015,1);">1</a>
+ 
+<a onclick="showWeek(2015,2);">2</a>
+ 
+<a onclick="showWeek(2015,3);">3</a>
+ 
+<a onclick="showWeek(2015,4);">4</a>
+ 
+<a onclick="showWeek(2015,5);">5</a>
+ 
+<a onclick="showWeek(2015,6);">6</a>
+ 
+<a onclick="showWeek(2015,7);">7</a>
+ 
+<a onclick="showWeek(2015,8);">8</a>
+ 
+<a onclick="showWeek(2015,9);">9</a>
+ 
+<a onclick="showWeek(2015,10);">10</a>
+
+
+
+<b>Playoffs:&nbsp</b> 
+        <a onclick="showWeek(2015,11);" style="cursor:hand;">1</a>
+        <a onclick="showWeek(2015,12);" style="cursor:hand;">2</a>
+        <a onclick="showWeek(2015,13);" style="cursor:hand;"><span class="selectedWeek">3</span></a>
+        
+<!-- 11 Week Regular Season-->
+
+     
+        </form> 
+<br>
+
+<div class="btGames">
+
+ 
+ 
+<a href="http://espn.go.com/ncf/boxscore?gameId=400763576">
+   <div class="btGame">
+    <div class="btGameHdr">
+ Fri 2:30PM 
+    </div>
+    <div class="btTeamLine">
+     <div class="btTeam">IA</div>
+     <div class="btScore">0</div>
+    </div>
+    <div class="clear"></div>
+    <div class="btTeamLine">
+     <div class="btTeam">NEB</div>
+     <div class="btScore">0</div>
+   </div>
+  </div>
+</a>
+
+ 
+ 
+<a href="http://espn.go.com/ncf/boxscore?gameId=400763581">
+   <div class="btGame">
+    <div class="btGameHdr">
+ 11:00AM 
+    </div>
+    <div class="btTeamLine">
+     <div class="btTeam">IND</div>
+     <div class="btScore">0</div>
+    </div>
+    <div class="clear"></div>
+    <div class="btTeamLine">
+     <div class="btTeam">PUR</div>
+     <div class="btScore">0</div>
+   </div>
+  </div>
+</a>
+
+ 
+ 
+<a href="http://espn.go.com/ncf/boxscore?gameId=400763582">
+   <div class="btGame">
+    <div class="btGameHdr">
+ 11:00AM 
+    </div>
+    <div class="btTeamLine">
+     <div class="btTeam">MLD</div>
+     <div class="btScore">0</div>
+    </div>
+    <div class="clear"></div>
+    <div class="btTeamLine">
+     <div class="btTeam">RUT</div>
+     <div class="btScore">0</div>
+   </div>
+  </div>
+</a>
+
+ 
+ 
+<a href="http://espn.go.com/ncf/boxscore?gameId=400763578">
+   <div class="btGame">
+    <div class="btGameHdr">
+ 11:00AM 
+    </div>
+    <div class="btTeamLine">
+     <div class="btTeam">OSU</div>
+     <div class="btScore">0</div>
+    </div>
+    <div class="clear"></div>
+    <div class="btTeamLine">
+     <div class="btTeam">MICH</div>
+     <div class="btScore">0</div>
+   </div>
+  </div>
+</a>
+
+ 
+ 
+<a href="http://espn.go.com/ncf/boxscore?gameId=400763577">
+   <div class="btGame">
+    <div class="btGameHdr">
+ 2:30PM 
+    </div>
+    <div class="btTeamLine">
+     <div class="btTeam">NW</div>
+     <div class="btScore">0</div>
+    </div>
+    <div class="clear"></div>
+    <div class="btTeamLine">
+     <div class="btTeam">ILL</div>
+     <div class="btScore">0</div>
+   </div>
+  </div>
+</a>
+
+ 
+ 
+<a href="http://espn.go.com/ncf/boxscore?gameId=400763579">
+   <div class="btGame">
+    <div class="btGameHdr">
+ 2:30PM 
+    </div>
+    <div class="btTeamLine">
+     <div class="btTeam">PSU</div>
+     <div class="btScore">0</div>
+    </div>
+    <div class="clear"></div>
+    <div class="btTeamLine">
+     <div class="btTeam">MSU</div>
+     <div class="btScore">0</div>
+   </div>
+  </div>
+</a>
+
+ 
+ 
+<a href="http://espn.go.com/ncf/boxscore?gameId=400763580">
+   <div class="btGame">
+    <div class="btGameHdr">
+ 2:30PM 
+    </div>
+    <div class="btTeamLine">
+     <div class="btTeam">WISC</div>
+     <div class="btScore">0</div>
+    </div>
+    <div class="clear"></div>
+    <div class="btTeamLine">
+     <div class="btTeam">MINN</div>
+     <div class="btScore">0</div>
+   </div>
+  </div>
+</a>
+
+ 
+
+  <div style="float:left;width:100%; margin-bottom: 10px;font-size: .8em">All Times Eastern</div>
+ </div>
+
+      </td>
+     </tr>
+     <tr><td align=center><b><a href='ViewResultsByMatchup.php?ViewWeek=13&ViewYear=2015'>View Complete Result Grid</a></b></td></tr>
+ <!--    <tr><td align=center><b>Year: 2015</b>&nbsp&nbsp<b>Week: 13</b></td></tr>-->
+
+
+
+
+
+
+	<!--2007 Schedule-->
+
+  <tr>
+   <td>
+    <table align=center>
+  
+  	<tr><td align=center><b>Playoff</b></td></tr>
+  
+
+<tr>
+ <td>
+          
+          <table border=1 bordercolor=black cellspacing=0 cellpadding=0><tr><td>
+           <table border=0 cellspacing=0 cellpadding=3 width=100%>
+            <tr bgcolor=#00A7E3>
+             <td width=175><font color=white><b>Game 1</b></font></td>
+             <td><font color=white><b>Score</b></font></td>
+            </tr>
+            <tr>
+             <td><span class="tblLeagueGames">Andrew Smith</span><br class="show-for-mid-up"><span class="show-for-mid-up">&nbsp;&nbsp;&nbsp;McNuttin but a G Thang</span></td>
+             <td align=center>
+-
+             </td>
+            </tr>
+            <tr>
+             <td><span class="tblLeagueGames">Josh Edgin</span><br class="show-for-mid-up"><span class="show-for-mid-up">&nbsp;&nbsp;&nbsp;The Scrappy One</span></td>
+             <td align=center>
+-
+             </td>
+            </tr>
+           </table>
+          </td></tr></table>
+ 
+          
+ </td>         
+ <td>     
+ 	 
+          
+ </td>  
+</tr>
+
+
+<tr>
+ <td>
+          
+          <table border=1 bordercolor=black cellspacing=0 cellpadding=0><tr><td>
+           <table border=0 cellspacing=0 cellpadding=3 width=100%>
+            <tr bgcolor=#00A7E3>
+             <td width=175><font color=white><b>Game 2</b></font></td>
+             <td><font color=white><b>Score</b></font></td>
+            </tr>
+            <tr>
+             <td><span class="tblLeagueGames">Rick Smith</span><br class="show-for-mid-up"><span class="show-for-mid-up">&nbsp;&nbsp;&nbsp;Rix Pix</span></td>
+             <td align=center>
+-
+             </td>
+            </tr>
+            <tr>
+             <td><span class="tblLeagueGames">Mike Pipho</span><br class="show-for-mid-up"><span class="show-for-mid-up">&nbsp;&nbsp;&nbsp;Albino Pigeons</span></td>
+             <td align=center>
+-
+             </td>
+            </tr>
+           </table>
+          </td></tr></table>
+ 
+          
+ </td>         
+ <td>     
+ 	 
+          
+ </td>  
+</tr>
+
+
+<tr>
+ <td>
+ 
+          
+ </td>         
+ <td>     
+ 	 
+          
+ </td>  
+</tr>
+
+
+<tr>
+ <td>
+ 
+          
+ </td>         
+ <td>     
+ 	 
+          
+ </td>  
+</tr>
+
+
+<tr>
+ <td>
+ 
+          
+ </td>         
+ <td>     
+ 	 
+          
+ </td>  
+</tr>
+
+
+
+
+
+    </table>
+   </td>
+  </tr>
+
+
+<!--END 2007 SCHEDULE-->
+
+
+     <tr>
+      <td align=center>
+
+
+
+
+
+  </td>
+ </tr>
+
+    
+</table>
+
+
+
+
+
+
+	<div id="navcontainer_footer">
+		<ul id="navlist_footer">
+			<li><a href="SetLineup.php">Lineup</a></li>
+			<li><a href="ScheduleResults.php">Scores</a></li>
+			<li><a href="Standings.php">Standings</a></li>
+			<li><a href="Rules.php">Rules</a></li>
+			<li><a href="Records.php">Records</a></li>
+    		<li><a href="TeamInfo.php">Team Info</a></li>
+        	<li><a href="MessageBoard.php">Message Board</a></li>
+        	</div>
+		</ul>
+	</div>
+
+</body>
+</html>

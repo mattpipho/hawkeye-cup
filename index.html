@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawkeye Cup</title>
+
+<link rel="stylesheet" href="hawkeyecup.css" />
+<link rel="stylesheet" href="themes/hawkeyecup.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="jquery.cookie.js"></script>
+<script type="text/javascript" src="jquery.tablesorter.min.js"></script> 
+<script type="text/javascript" src="hc.js"></script>
+
+
+
+</head>
+<body>
+
+
+<!-- Start of Login Page -->
+	<div data-role="page" id="login">
+	
+  <div data-role="header">
+  	<div class="mainHeading"><a href="#"><img id="mainlogo" src="hawkeye.png" /></a></div>
+	   <div data-role="navbar">
+	    <ul>
+	      <li><a href="#scorecard">Scorecard</a></li>
+	      <li><a href="#standings">Standings</a></li>
+	    </ul>
+	  </div>
+  </div>
+	
+	  <div data-role="main" class="ui-content">
+	  	<form id="login">
+		  	<label for="username">Last Name</label>
+				<input type="text" name="username" id="username" value="">
+				<button id="btnLogin" class="ui-btn ui-shadow">Login</button>
+	  	</form>
+	  	<div id="returnMessage"></div>
+	  </div>
+	
+  <div data-role="footer">
+  	<div class="footerUsername"></div>
+  	<div class="logout">logout</div>
+  </div>
+	
+	</div>
+
+<!-- End of Login Page -->
+<!-- Start of Entry Page -->
+<div data-role="page" id="entry">
+  <div data-role="header">
+  	<div class="mainHeading"><a href="#"><img id="mainlogo" src="hawkeye.png" /></a></div>
+	   <div data-role="navbar">
+	    <ul>
+	      <li><a href="#entry" class="ui-btn-active">Enter Scores</a></li>
+	      <li><a class="scorecardLink" href="#scorecard">Scorecard</a></li>
+	      <li><a href="#">Standings</a></li>
+	    </ul>
+	  </div>
+  </div>
+
+  <div data-role="main" class="ui-content" id="holeEntryContent">
+ 	<div id="roundInfo"><span class="round-name"></span></div>
+	
+  	<div><span id="ajaxMessage"></span>
+  <table id="scoreEntryTable" class="myTable">
+		<thead>
+			<tr class="team-0">
+				<th>Golfer</th>
+         <th>Score</th>
+         <th>Bump</th>
+         <th class="scoreBreakpoint">Hdcp</th>
+         <th class="scoreBreakpoint">Adj Hdcp</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr id="golfer-A-row">
+				 <td><span class="golfer-A"></span><br></td>
+         <td><select name="golfer-A-gross_score" id="golfer-A-gross_score" class="gross-score-select" data-native-menu="false" data-mini="true">
+				        <option value="">Enter Score</option>
+				    </select>
+				 </td>
+         <td><span class="golfer-A-bump"></span></td>
+         <td class="scoreBreakpoint"><span class="golfer-A-hdcp"></span></td>
+         <td class="scoreBreakpoint"><span class="golfer-A-adj-hdcp"></span></td>
+       </tr>
+       <tr id="golfer-B-row">
+         <td><span class="golfer-B"></span><br></td>
+         <td><select name="golfer-B-gross_score" id="golfer-B-gross_score" class="gross-score-select" data-native-menu="false" data-mini="true">
+				        <option value="">Enter Score</option>
+				    </select>
+				 </td>
+         <td><span class="golfer-B-bump"></span></td>
+         <td class="scoreBreakpoint"><span class="golfer-B-hdcp"></span></td>
+         <td class="scoreBreakpoint"><span class="golfer-B-adj-hdcp"></span></td>
+       </tr>
+       <tr id="golfer-C-row">
+         <td><span class="golfer-C"></span><br></td>
+         <td><select name="golfer-C-gross_score" id="golfer-C-gross_score" class="gross-score-select" data-native-menu="false" data-mini="true">
+				        <option value="">Enter Score</option>
+				    </select>
+				 </td>
+         <td><span class="golfer-C-bump"></span></td>
+         <td class="scoreBreakpoint"><span class="golfer-C-hdcp"></span></td>
+         <td class="scoreBreakpoint"><span class="golfer-C-adj-hdcp"></span></td>
+       </tr>
+       <tr id="golfer-D-row">
+         <td><span class="golfer-D"></span><br></td>
+         <td><select name="golfer-D-gross_score" id="golfer-D-gross_score" class="gross-score-select" data-native-menu="false" data-mini="true">
+				        <option value="">Enter Score</option>
+				    </select>
+				 </td>
+         <td><span class="golfer-D-bump"></span></td>
+         <td class="scoreBreakpoint"><span class="golfer-D-hdcp"></span></td>
+         <td class="scoreBreakpoint"><span class="golfer-D-adj-hdcp"></span></td>
+       </tr>
+       
+       
+     </tbody>
+   </table></div>
+
+<fieldset class="ui-grid-b">
+  <div class="ui-block-a wrapperPreviousHole">
+  	<button id="btnPrevHole" type="submit" data-theme="a" data-icon="arrow-l" >
+  		<span class="btnHole">Hole <span class="prevHole"></span></span><br>
+  		<span class="btnPar">Par <span class="prevPar">3</span></span></button>
+  </div>
+  <div class="ui-block-b">
+  	<button class="ui-btn-active" type="submit" data-theme="a">
+  		<div>Hole <span class="currentHole"></span></div>
+  		<div class="btnPar">Par <span class="currentPar"></span></div> 
+  		<div class="btnHdcp">HDCP <span class="currentHdcp"></span></div>
+  	</button>
+  </div>
+  <div class="ui-block-c">
+  	<button id="btnNextHole" type="submit" data-theme="a" data-icon="arrow-r" data-iconpos="right"  data-transition="flow">
+  		<span class="btnHole">Hole <span class="nextHole"></span></span><br>
+  		<span class="btnPar">Par <span class="nextPar"></span></span>
+  	</button>
+  	<button id="btnSaveRound" type="submit" data-theme="a" data-icon="arrow-r" data-iconpos="right"  data-transition="flow">
+  		<span class="btnHole">Save</span><br>
+  		<span class="btnHole">Round</span>
+  	</button>
+  </div>
+</fieldset>
+
+
+  </div>
+
+  <div data-role="footer">
+  	<div class="footerUsername"></div>
+  	<div class="logout">logout</div>
+  </div>
+</div> 
+<!-- End ENTRY Page -->
+
+<!-- Start of ScoreCard Page -->
+<div data-role="page" id="scorecard">
+  <div data-role="header">
+  	<div class="mainHeading"><a href="#"><img id="mainlogo" src="hawkeye.png" /></a></div>
+	   <div data-role="navbar">
+	    <ul>
+	      <li><a href="#entry">Enter Scores</a></li>
+	      <li><a href="#scorecard" class="ui-btn-active">Scorecard</a></li>
+	      <li><a href="#">Standings</a></li>
+	    </ul>
+	  </div>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+          <div style="max-width:450px">
+						<select class="select-rounds" name="select-score-round" id="select-score-round" data-native-menu="false" data-mini="true">
+						</select>
+          </div>
+
+          <table id="scoresTable" class="tablesorter ui-responsive table-stroke"
+          	     data-role="table" data-mode="columntoggle" >
+            <thead>
+             <tr>
+              <th>Golfer</th>
+              <th data-priority="3">1</th>
+              <th data-priority="3">2</th>
+              <th data-priority="3">3</th>
+              <th data-priority="3">4</th>
+              <th data-priority="3">5</th>
+              <th data-priority="3">6</th>
+              <th data-priority="3">7</th>
+              <th data-priority="3">8</th>
+              <th data-priority="3">9</th>
+              <th data-priority="3">10</th>
+              <th data-priority="3">11</th>
+              <th data-priority="3">12</th>
+              <th data-priority="3">13</th>
+              <th data-priority="3">14</th>
+              <th data-priority="3">15</th>
+              <th data-priority="3">16</th>
+              <th data-priority="3">17</th>
+              <th data-priority="3">18</th>
+              <th data-priority="2">Out</th>
+              <th data-priority="2">In</th>
+              <th data-priority="2">Score</th>
+              <th data-priority="1">Total</th>
+              <th data-priority="1">Thru</th>
+             </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+		
+  </div>
+  
+  <div data-role="footer">
+  	<div class="footerUsername"></div>
+  	<div class="logout">logout</div>
+  </div>
+</div> 
+  
+
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+body {
+	text-shadow: none;
+}
+
+#mainlogo{
+	margin-top:0px;
+	max-width:200px;
+	height: auto;
+
+}
+.redBorder {
+	border: 1px solid red;
+	
+}
+.par-row, .handicap-row{
+	font-size: .9em;
+}
+.score-row {
+	font-size: .9em;
+}
+#scoresTable td, #scoresTable th{
+	text-align: center;
+}
+#scoreEntryTable{
+		margin-top: -75px;
+}
+#btnPrevHole{
+	display: none;
+}
+#btnSaveRound{
+	display: none;
+}
+
+.btnHole {
+	font-size: .75em;
+}
+.btnPar {
+	font-weight: normal;
+	font-size: .7em;
+}
+.btnHdcp {
+	font-weight: normal;
+	font-size: .7em;
+}
+.myTable{
+	margin-top: -50px;
+	border-collapse: collapse;
+	width: 100%;
+	border: 0px solid blue;
+	text-align: center;
+}
+.myTable td{
+ padding: 2px;
+ vertical-align: middle;
+}
+.myTable th{
+ background-color: #000;
+ padding: 5px;
+ color: #ffd520;
+ text-shadow: none;
+}
+.myTable, .myTable td, .myTable th {
+	border-bottom: 1px solid #999;
+}
+
+#holeEntryContent{
+	padding: .25em;
+}
+.team-0{
+	border-left: 5px solid #000;
+	border-right: 5px solid #000;
+}
+.team-1{
+	border-left: 5px solid #ffd520;
+	border-right: 5px solid #ffd520;
+}
+
+#roundInfo {
+	width:100%;
+	text-align:center;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.mainHeading {
+	text-align: center;
+}
+
+.scoreBreakpoint{
+		display:none;
+	}
+	.course-detail-cell {
+		display: none !important;
+	}
+
+@media ( min-width: 400px ) {
+	#scoreEntryTable{
+			margin-top: -40px;
+	}
+	
+
+	
+}
+@media ( min-width: 600px ) {
+	
+	.course-detail-cell {
+		display:table-cell !important;;
+	}
+	#scoreEntryTable{
+			margin-top: 0px;
+	}
+}
