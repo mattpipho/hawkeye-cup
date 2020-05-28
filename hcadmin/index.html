@@ -1,299 +1,299 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hawkeye Cup Administration</title>
-
-<link rel="stylesheet" href="../hawkeyecup.css" />
-<link rel="stylesheet" href="../themes/hawkeyecup.min.css" />
-<link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript" src="../jquery.cookie.js"></script>
-<script type="text/javascript" src="../jquery.tablesorter.min.js"></script> 
-<script type="text/javascript" src="hc_admin.js"></script>
-
-
-
-</head>
-<body>
-
-<!-- Start of Login Page -->
-  <div data-role="page" id="login">
-    
-	  <div data-role="header">
-	  	<div class="mainHeading"><a href="#"><img id="mainlogo" src="../hawkeye.png" /></a></div>
-		   <div data-role="navbar">
-		    <ul>
-		      <li><a href="#"  class="ui-btn-active">Administration</a></li>
-		    </ul>
-		  </div>
-	  </div>
-	
-	  <div data-role="main" class="ui-content">
-	  	<form id="login">
-		  	<label for="username">Username:</label>
-				<input type="text" name="username" id="username" value="">
-				<button id="btnLogin" class="ui-btn ui-shadow">Login</button>
-	  	</form>
-	  	<div id="returnMessage"></div>
-	  </div>
-	
-	  <div data-role="footer">
-	  	<div class="footerUsername"></div>
-	  	<div class="logout">logout</div>
-	  </div>
-	
-	</div>
-<!-- End of Login Page -->
-
-
-<!-- Start of Admin Page -->
-	<div data-role="page" id="admin">
-	
-	  <div data-role="header">
-	  	<div class="mainHeading"><a href="#"><img id="mainlogo" src="../hawkeye.png" /></a></div>
-		   <div data-role="navbar">
-		    <ul>
-		      <li><a href="#" class="ui-btn-active">Administration</a></li>
-		   	</ul>
-		  </div>
-	  </div>
-	
-	  <div data-role="main" class="ui-content">
-	    
-	    <div data-role="collapsible"  data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-	      <h4>Golfers</h4>
-	      <table id="golferTable" data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
-	       <thead>
-	        <tr>
-	         <th>Name</th>
-	         <th data-priority="3">HDCP</th>
-	         <th data-priority="1">Team</th>
-	        </tr>
-	       </thead>
-	       <tbody>
-          <tr>
-           <td colspan=3>No Golfers Loaded</td>	
-          </tr>
-            
-            
-	       </tbody>
-	      </table>
-	      
-	    </div>
-	    
-	    
-	    
-	    
-	    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-	      <h4>Active Round</h4>
-	      
-				<select class="select-rounds" name="select-active-round" id="select-active-round" data-native-menu="false" data-mini="false">
-				</select>
-	    
-	  	</div>
-	  	
-	
-	    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-	      <h4>Tee Times</h4>
-                   
-                <select class="select-rounds" name="select-tee-time-round" id="select-tee-time-round" data-native-menu="false" data-mini="true">
-	              </select>
-
-	       <div data-role="collapsibleset">
-	        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-content-theme="false">
-	          <h4>Group 1</h4>
-	          <ul class="tee-times" data-role="listview" id="tee-time-1" data-tee-time-id="1">
-	           <li class="tee-time-golfer-add" id="tee-time-add-1"><form>
-	           	  <div class="ui-field-contain">
-	               <label for="select-custom-1">Add Golfer</label>
-	               <select class="select-tee-time" name="select-tee-time-add-1" id="select-tee-time-add-1" data-tee-time-id="1" data-native-menu="false" data-mini="true">
-	                  <option value="" data-placeholder>Select Golfer ...</option>
-										<option value="1">Bruns</option>
-										<option value="2">Delagardelle</option>
-										<option value="3">Greiner</option>
-										<option value="4">Henderson</option>
-										<option value="6">Johnson</option>
-										<option value="7">McCarter</option>
-										<option value="8">McGarvey</option>
-										<option value="9">Mueller</option>
-										<option value="5">Nyhus</option>
-    									<option value="10">Reese</option>
-										<option value="11">Reimers</option>
-										<option value="12">Salter</option>
-										<option value="13">Scott</option>
-										<option value="14">Sheets</option>
-										<option value="15">Stever</option>
-										<option value="16">Stremlau</option>
-	               </select>
-	               
-	              </div>
-	              </form>
-	           </li>
-	         </ul>
-	        </div>
-	        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-content-theme="false">
-	          <h4>Group 2</h4>
-	          <ul class="tee-times" data-role="listview" id="tee-time-2" data-tee-time-id="2">
-	           <li class="tee-time-golfer-add" id="tee-time-add-2"><form>
-	           	  <div class="ui-field-contain">
-	               <label for="select-tee-time-add-2">Add Golfer</label>
-	               <select class="select-tee-time" name="select-tee-time-add-2" id="select-tee-time-add-2" data-tee-time-id="2" data-native-menu="false" data-mini="true">
-	                  <option value="" data-placeholder>Select Golfer ...</option>
-    									<option value="1">Bruns</option>
-    									<option value="2">Delagardelle</option>
-										<option value="3">Greiner</option>
-										<option value="4">Henderson</option>
-										<option value="6">Johnson</option>
-										<option value="7">McCarter</option>
-										<option value="8">McGarvey</option>
-										<option value="9">Mueller</option>
-										<option value="5">Nyhus</option>
-    									<option value="10">Reese</option>
-										<option value="11">Reimers</option>
-										<option value="12">Salter</option>
-										<option value="13">Scott</option>
-										<option value="14">Sheets</option>
-										<option value="15">Stever</option>
-										<option value="16">Stremlau</option>
-                                        </select>
-	               
-	              </div>
-	              </form>
-	           </li>
-	          </ul>
-	        </div> 
-	        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-content-theme="false">
-	          <h4>Group 3</h4>
-	          <ul class="tee-times" data-role="listview" id="tee-time-3" data-tee-time-id="3">
-	           <li><div class="ui-field-contain">
-	               <label for="select-tee-time-add-3">Add Golfer</label>
-	               <select class="select-tee-time" name="select-tee-time-add-3" id="select-tee-time-add-3" data-tee-time-id="3" data-native-menu="false" data-mini="true">
-	                  <option value="" data-placeholder>Select Golfer ...</option>
-    									<option value="1">Bruns</option>
-    									<option value="2">Delagardelle</option>
-										<option value="3">Greiner</option>
-										<option value="4">Henderson</option>
-										<option value="6">Johnson</option>
-										<option value="7">McCarter</option>
-										<option value="8">McGarvey</option>
-										<option value="9">Mueller</option>
-										<option value="5">Nyhus</option>
-    									<option value="10">Reese</option>
-										<option value="11">Reimers</option>
-										<option value="12">Salter</option>
-										<option value="13">Scott</option>
-										<option value="14">Sheets</option>
-										<option value="15">Stever</option>
-										<option value="16">Stremlau</option>
-	               </select>
-	            	</div>
-	           </li>
-	          </ul>
-	        </div> 
-	        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-content-theme="false">
-	          <h4>Group 4</h4>
-	          <ul class="tee-times" data-role="listview" id="tee-time-4" data-tee-time-id="4">
-	           <li><div class="ui-field-contain">
-	               <label for="select-tee-time-add-4">Add Golfer</label>
-	               <select class="select-tee-time" name="select-tee-time-add-4" id="select-tee-time-add-4" data-tee-time-id="4" data-native-menu="false" data-mini="true">
-	                  <option value="" data-placeholder>Select Golfer ...</option>
-    									<option value="1">Bruns</option>
-    									<option value="2">Delagardelle</option>
-										<option value="3">Greiner</option>
-										<option value="4">Henderson</option>
-										<option value="6">Johnson</option>
-										<option value="7">McCarter</option>
-										<option value="8">McGarvey</option>
-										<option value="9">Mueller</option>
-										<option value="5">Nyhus</option>
-    									<option value="10">Reese</option>
-										<option value="11">Reimers</option>
-										<option value="12">Salter</option>
-										<option value="13">Scott</option>
-										<option value="14">Sheets</option>
-										<option value="15">Stever</option>
-										<option value="16">Stremlau</option>
-	               </select>
-	              </div>
-	           </li>
-	          </ul>
-	        </div> 
-	        
-	       </div>
-
-	  	</div>
-	
-        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-	      <h4>Scores</h4>
-          <div style="max-width:450px">
-						<select class="select-rounds" name="select-score-round" id="select-score-round" data-native-menu="false" data-mini="true">
-						</select>
-	            
-          </div>
-          <form>
-            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                <input type="radio" name="score-display" id="score-display-gross" value="gross" checked="checked">
-                <label for="score-display-gross">Gross</label>
-                <input type="radio" name="score-display" id="score-display-2b" value="skins" disabled="disabled">
-                <label for="score-display-2b">Skins</label>
-                <input type="radio" name="score-display" id="score-display-h-2c" value="stableford" disabled="disabled">
-                <label for="score-display-h-2c">Stableford</label>
-                <input type="radio" name="score-display" id="score-display-h-2d" value="net" disabled="disabled">
-                <label for="score-display-h-2d">Net</label>
-            </fieldset>
-          </form>
-          
-          <table id="scoresTable" class="ui-responsive table-stroke tablesorter" 
-          	     data-role="table" data-mode="columntoggle">
-            <thead>
-             <tr>
-              <th data-priority="4">ID</th>
-              <th data-priority="5">Tee Time</th>
-              <th data-priority="5">Team</th>
-              <th>Golfer</th>
-              <th data-priority="3">1</th>
-              <th data-priority="3">2</th>
-              <th data-priority="3">3</th>
-              <th data-priority="3">4</th>
-              <th data-priority="3">5</th>
-              <th data-priority="3">6</th>
-              <th data-priority="3">7</th>
-              <th data-priority="3">8</th>
-              <th data-priority="3">9</th>
-              <th data-priority="2">Out</th>
-              <th data-priority="3">10</th>
-              <th data-priority="3">11</th>
-              <th data-priority="3">12</th>
-              <th data-priority="3">13</th>
-              <th data-priority="3">14</th>
-              <th data-priority="3">15</th>
-              <th data-priority="3">16</th>
-              <th data-priority="3">17</th>
-              <th data-priority="3">18</th>
-              <th data-priority="2">In</th>
-              <th data-priority="1">Total</th>
-             </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-          
-        </div>
-          
-	  </div>
-	
-	  <div data-role="footer">
-	  	<div class="footerUsername"></div>
-	  	<div class="logout">logout</div>
-	  </div>	
-
-	</div>
-<!-- End of Admin Page -->
-
-
-</body>
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawkeye Cup Administration</title>
+
+<link rel="stylesheet" href="../hawkeyecup.css" />
+<link rel="stylesheet" href="../themes/hawkeyecup.min.css" />
+<link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="../jquery.cookie.js"></script>
+<script type="text/javascript" src="../jquery.tablesorter.min.js"></script> 
+<script type="text/javascript" src="hc_admin.js"></script>
+
+
+
+</head>
+<body>
+
+<!-- Start of Login Page -->
+  <div data-role="page" id="login">
+    
+      <div data-role="header">
+	  	<div class="mainHeading"><a href="#"><img id="mainlogo" src="../hawkeye.png" /></a></div>
+		   <div data-role="navbar">
+		    <ul>
+		      <li><a href="#"  class="ui-btn-active">Administration</a></li>
+		    </ul>
+		  </div>
+	  </div>
+	
+	  <div data-role="main" class="ui-content">
+	  	<form id="login">
+		  	<label for="username">Username:</label>
+				<input type="text" name="username" id="username" value="">
+				<button id="btnLogin" class="ui-btn ui-shadow">Login</button>
+	  	</form>
+	  	<div id="returnMessage"></div>
+	  </div>
+	
+	  <div data-role="footer">
+	  	<div class="footerUsername"></div>
+	  	<div class="logout">logout</div>
+	  </div>
+	
+	</div>
+<!-- End of Login Page -->
+
+
+<!-- Start of Admin Page -->
+	<div data-role="page" id="admin">
+	
+	  <div data-role="header">
+	  	<div class="mainHeading"><a href="#"><img id="mainlogo" src="../hawkeye.png" /></a></div>
+		   <div data-role="navbar">
+		    <ul>
+		      <li><a href="#" class="ui-btn-active">Administration</a></li>
+		   	</ul>
+		  </div>
+	  </div>
+	
+	  <div data-role="main" class="ui-content">
+	    
+	    <div data-role="collapsible"  data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+	      <h4>Golfers</h4>
+	      <table id="golferTable" data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
+	       <thead>
+	        <tr>
+	         <th>Name</th>
+	         <th data-priority="3">HDCP</th>
+	         <th data-priority="1">Team</th>
+	        </tr>
+	       </thead>
+	       <tbody>
+          <tr>
+           <td colspan=3>No Golfers Loaded</td>	
+          </tr>
+            
+            
+	       </tbody>
+	      </table>
+	      
+	    </div>
+	    
+	    
+	    
+	    
+	    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+	      <h4>Active Round</h4>
+	      
+				<select class="select-rounds" name="select-active-round" id="select-active-round" data-native-menu="false" data-mini="false">
+				</select>
+	    
+	  	</div>
+	  	
+	
+	    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+	      <h4>Tee Times</h4>
+                   
+                <select class="select-rounds" name="select-tee-time-round" id="select-tee-time-round" data-native-menu="false" data-mini="true">
+	              </select>
+
+	       <div data-role="collapsibleset">
+	        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-content-theme="false">
+	          <h4>Group 1</h4>
+	          <ul class="tee-times" data-role="listview" id="tee-time-1" data-tee-time-id="1">
+	           <li class="tee-time-golfer-add" id="tee-time-add-1"><form>
+	           	  <div class="ui-field-contain">
+	               <label for="select-custom-1">Add Golfer</label>
+	               <select class="select-tee-time" name="select-tee-time-add-1" id="select-tee-time-add-1" data-tee-time-id="1" data-native-menu="false" data-mini="true">
+	                  <option value="" data-placeholder>Select Golfer ...</option>
+										<option value="1">Bruns</option>
+										<option value="2">Delagardelle</option>
+										<option value="3">Greiner</option>
+										<option value="4">Henderson</option>
+										<option value="6">Johnson</option>
+										<option value="7">McCarter</option>
+										<option value="8">McGarvey</option>
+										<option value="9">Mueller</option>
+										<option value="5">Nyhus</option>
+    									<option value="10">Reese</option>
+										<option value="11">Reimers</option>
+										<option value="12">Henderson II</option>
+										<option value="13">Scott</option>
+										<option value="14">Sheets</option>
+										<option value="15">Stever</option>
+										<option value="16">Stremlau</option>
+	               </select>
+	               
+	              </div>
+	              </form>
+	           </li>
+	         </ul>
+	        </div>
+	        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-content-theme="false">
+	          <h4>Group 2</h4>
+	          <ul class="tee-times" data-role="listview" id="tee-time-2" data-tee-time-id="2">
+	           <li class="tee-time-golfer-add" id="tee-time-add-2"><form>
+	           	  <div class="ui-field-contain">
+	               <label for="select-tee-time-add-2">Add Golfer</label>
+	               <select class="select-tee-time" name="select-tee-time-add-2" id="select-tee-time-add-2" data-tee-time-id="2" data-native-menu="false" data-mini="true">
+	                  <option value="" data-placeholder>Select Golfer ...</option>
+    									<option value="1">Bruns</option>
+    									<option value="2">Delagardelle</option>
+										<option value="3">Greiner</option>
+										<option value="4">Henderson</option>
+										<option value="12">Henderson II</option>
+                                        <option value="6">Johnson</option>
+										<option value="7">McCarter</option>
+										<option value="8">McGarvey</option>
+										<option value="9">Mueller</option>
+										<option value="5">Nyhus</option>
+    									<option value="10">Reese</option>
+										<option value="11">Reimers</option>
+										<option value="13">Scott</option>
+										<option value="14">Sheets</option>
+										<option value="15">Stever</option>
+										<option value="16">Stremlau</option>
+                                        </select>
+	               
+	              </div>
+	              </form>
+	           </li>
+	          </ul>
+	        </div> 
+	        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-content-theme="false">
+	          <h4>Group 3</h4>
+	          <ul class="tee-times" data-role="listview" id="tee-time-3" data-tee-time-id="3">
+	           <li><div class="ui-field-contain">
+	               <label for="select-tee-time-add-3">Add Golfer</label>
+	               <select class="select-tee-time" name="select-tee-time-add-3" id="select-tee-time-add-3" data-tee-time-id="3" data-native-menu="false" data-mini="true">
+	                  <option value="" data-placeholder>Select Golfer ...</option>
+    									<option value="1">Bruns</option>
+    									<option value="2">Delagardelle</option>
+										<option value="3">Greiner</option>
+										<option value="4">Henderson</option>
+										<option value="12">Henderson II</option>
+										<option value="6">Johnson</option>
+										<option value="7">McCarter</option>
+										<option value="8">McGarvey</option>
+										<option value="9">Mueller</option>
+										<option value="5">Nyhus</option>
+    									<option value="10">Reese</option>
+										<option value="11">Reimers</option>
+										<option value="13">Scott</option>
+										<option value="14">Sheets</option>
+										<option value="15">Stever</option>
+										<option value="16">Stremlau</option>
+	               </select>
+	            	</div>
+	           </li>
+	          </ul>
+	        </div> 
+	        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-content-theme="false">
+	          <h4>Group 4</h4>
+	          <ul class="tee-times" data-role="listview" id="tee-time-4" data-tee-time-id="4">
+	           <li><div class="ui-field-contain">
+	               <label for="select-tee-time-add-4">Add Golfer</label>
+	               <select class="select-tee-time" name="select-tee-time-add-4" id="select-tee-time-add-4" data-tee-time-id="4" data-native-menu="false" data-mini="true">
+	                  <option value="" data-placeholder>Select Golfer ...</option>
+    									<option value="1">Bruns</option>
+    									<option value="2">Delagardelle</option>
+										<option value="3">Greiner</option>
+										<option value="4">Henderson</option>
+										<option value="12">Henderson II</option>
+										<option value="6">Johnson</option>
+										<option value="7">McCarter</option>
+										<option value="8">McGarvey</option>
+										<option value="9">Mueller</option>
+										<option value="5">Nyhus</option>
+    									<option value="10">Reese</option>
+										<option value="11">Reimers</option>
+										<option value="13">Scott</option>
+										<option value="14">Sheets</option>
+										<option value="15">Stever</option>
+										<option value="16">Stremlau</option>
+	               </select>
+	              </div>
+	           </li>
+	          </ul>
+	        </div> 
+	        
+	       </div>
+
+	  	</div>
+	
+        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+	      <h4>Scores</h4>
+          <div style="max-width:450px">
+						<select class="select-rounds" name="select-score-round" id="select-score-round" data-native-menu="false" data-mini="true">
+						</select>
+	            
+          </div>
+          <form>
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <input type="radio" name="score-display" id="score-display-gross" value="gross" checked="checked">
+                <label for="score-display-gross">Gross</label>
+                <input type="radio" name="score-display" id="score-display-2b" value="skins" disabled="disabled">
+                <label for="score-display-2b">Skins</label>
+                <input type="radio" name="score-display" id="score-display-h-2c" value="stableford" disabled="disabled">
+                <label for="score-display-h-2c">Stableford</label>
+                <input type="radio" name="score-display" id="score-display-h-2d" value="net" disabled="disabled">
+                <label for="score-display-h-2d">Net</label>
+            </fieldset>
+          </form>
+          
+          <table id="scoresTable" class="ui-responsive table-stroke tablesorter" 
+          	     data-role="table" data-mode="columntoggle">
+            <thead>
+             <tr>
+              <th data-priority="4">ID</th>
+              <th data-priority="5">Tee Time</th>
+              <th data-priority="5">Team</th>
+              <th>Golfer</th>
+              <th data-priority="3">1</th>
+              <th data-priority="3">2</th>
+              <th data-priority="3">3</th>
+              <th data-priority="3">4</th>
+              <th data-priority="3">5</th>
+              <th data-priority="3">6</th>
+              <th data-priority="3">7</th>
+              <th data-priority="3">8</th>
+              <th data-priority="3">9</th>
+              <th data-priority="2">Out</th>
+              <th data-priority="3">10</th>
+              <th data-priority="3">11</th>
+              <th data-priority="3">12</th>
+              <th data-priority="3">13</th>
+              <th data-priority="3">14</th>
+              <th data-priority="3">15</th>
+              <th data-priority="3">16</th>
+              <th data-priority="3">17</th>
+              <th data-priority="3">18</th>
+              <th data-priority="2">In</th>
+              <th data-priority="1">Total</th>
+             </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          
+        </div>
+          
+	  </div>
+	
+	  <div data-role="footer">
+	  	<div class="footerUsername"></div>
+	  	<div class="logout">logout</div>
+	  </div>	
+
+	</div>
+<!-- End of Admin Page -->
+
+
+</body>
 </html>

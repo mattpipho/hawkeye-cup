@@ -1,382 +1,382 @@
-body{
-	margin: 0px;
-	font-family: Arial;
-}
-td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #000000}
-a {  color: #000000; text-decoration: none}
-a:hover {  color: #0000FF; text-decoration: underline}
-a:active {  color: #0000FF; text-decoration: underline}
-input { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #000000 }
-select { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #000000 }
-H1 {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 25px; color: #000000}
-
-H2 {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 25px; color: #ffffff}
-.input-box{ color: #000000; background: #ffffff; border: #000 solid 1px }
-.buttonSytle {
-  font-family:Verdana,Arial,Helvetica,sans-serif;
-  font-size: 11px;
-  background-color: #cccccc;
-  border: 1px solid #000000;
-  cursor: hand;
-}
-
-#mainheader{
-	width: 100%;
-	text-align: center;
-	background-color: #000;
-	margin: 0px;
-	padding: 0px;
-	border: 0px solid red;
-}
-#maincontent{
-	max-width: 1024px;
-	text-align: center;
-	background-color: #fff;
-	margin: auto;
-	border: 1px solid red;
-}
-#mainfooter{
-	width: 100%;
-	text-align: center;
-	background-color: #eee;
-}
-#mainlogo{
-	margin-top:0px;
-	max-width:200px;
-	height: auto;
-
-}
-#navcontainer {
-	background-color: #ffd520;
-	margin: 0px;
-	text-align: center;
-			border: 0px solid blue;
-
-}
-
-
-#navcontainer ul, #navcontainer_footer ul {
-	margin: 0px;
-	padding: .5em;
-}
-#navlist li, #navcontainer_footer li{
-display: inline;
-list-style-type: none;
-padding-right: .5em;
-padding-left: .5em;
-}
-
-#navlist li a{
-	color: #000;
-	text-transform: uppercase;
-	text-decoration: none;
-	font-weight: bold;
-}
-#navlist li a:hover {
-	color: #fff;
-}
-#navcontainer_footer li a {
-	color: white;
-	text-transform: uppercase;
-	text-decoration: none;
-	font-weight: bold;
-}
-#navcontainer_footer li a:hover {
-	color: #aaa;
-}
-
-#navcontainer_footer {
-	background-color: #444;
-	margin: 0px;
-	text-align: center;
-	border: 0px solid blue;
-	font-size: .85em;
-}
-#navcontainer_login {
-	background-color: #000;
-	margin: 0px;
-	padding: 3px;
-	text-align: right;
-	font-size: .9em;
-	font-weight: bold;
-	color: #ddd;
-	text-transform: uppercase;
-	text-decoration: none;
-}
-#navcontainer_login a{
-	color: #bbb;
-}
-#navcontainer_login a:HOVER{
-	color: #000;
-}
-#rosterGrid {
-	max-width: 550px;
-}
-#missingMessage{
-border: 0px solid #bbb;
- max-width:300px;
- margin: auto;
-}
-
-.mainContent {
-	border: 1px solid red;
-	max-width: 97%;
-	min-height: 200px;
-	margin: auto;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	
-}
-#holeInformation{
-	text-align: center;
-}
-.lblHoleInfo{
-	font-weight: bold;
-}
-
-.selectedWeek {
-	background-color: #ccc;
-	font-weight: bold;
-	font-size: 1.1em;
-	padding: 2px;
-}
-#scheduleView {
-	max-width:500px;
-	margin-left:auto;
-	margin-right:auto;
-
-}
-#lineups{
-	 text-align: center;
-	 border-spacing: 0px;
-	 font-weight: normal;
-	 overflow: hidden;
-	 font-size: .75em;
-}
-#lineups .heading{
-	 background-color: #ffd520;
-	 color: white;
-	 text-align: center;
-}
-#lineups td{
-	padding: 1px;
-}
-#userLogin {
-	margin-top: 30px;
-	margin-bottom: 30px;
-	padding: 0px;
-	border: 0px solid #ccc;
-	
-}
-#loginTable {
-	border: 1px solid #ccc;
-	border-spacing: 0px;
-	
-}
-
-.selectContainer {
-	width: 200px;
-}
-
-.total {
-	border-right: 1px solid #bbb;
-}
-.btGames {
-    margin: auto;
-    margin-top: 10px;
-    font-size: .9em;
-    display: inline-block;
-    text-align: center;
-    max-width: 550px;
-}
-.btGame {
-  border: 1px solid #ccc;
-  display:inline-block;
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 3px;
-  min-width: 55px;
-}
-.btGameHdr{
-  background-color: #ffd520;
-  color:white;
-  padding-right:2px;
-  padding-left: 2px;
-}
-.btTeam{
-  float: left;
-  margin-left: 2px;
-  margin-right: 2px;
-}
-.btScore{
-  float: right;
-  margin-right: 2px;
-}
-
-.ldGroup {
-    margin: auto;
-    margin-top: 10px;
-    font-size: .7em;
-    display: inline-block;
-    text-align: center;
-    max-width: 600px;
-}
-.ldPosition {
-  border: 1px solid #ccc;
-  display:inline-block;
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 3px;
-  min-width: 125px;
-}
-.ldPosLine {
-	min-height:15px;
-}
-.ldPosHdr{
-  background-color: #ffd520;
-  color:white;
-  font-weight: bold;
-  font-size: 1.05em;
-  padding: 4px;
-  
-}
-.ldPosTeam{
-  float: left;
-  margin-left: 2px;
-  margin-right: 2px;
-  min-width: 35px;
-  
-}
-.ldPosName{
-  float: left;
-  margin-left: 2px;
-  margin-right: 4px;
-}
-.ldPosPts{
-  float: right;
-  margin-right: 2px;
-}
-
-.clear {
-  clear: both;
-}
-.negativeBalance {
-    color: red;
-}
-.positiveBalance {
-    color: #3c3;
-}
-
-.lineupMessage {
-	font-size: .9em;
-}
-
-.configuration {
-	width: 250px;
-	padding: 3px;
-	margin: 3px;
-	border: 1px solid #ccc;
-	display: inline-block;
-}
-legend {
-	font-size: 11pt;
-}
-label.field {
-	text-align: right;
-	width: 55px;
-	float: left;
-	font-weight: bold;
-}
-.lineupSet{
-	background-color: #9f9;
-}
-.lineupNotSet{
-  background-color: #fff;
-  min-width: 225px;
-}
-.playerSelected{
-	background-color: #ffc;
-}
-.configuration input {
-	float: left;
-	text-align: center;
-	width: 50px;
-}
-.configuration p {
-	clear: both;
-	padding: 5px;
-}
-#tables div {
-	display: inline-block;
-	padding-right: 5px;
-}
-#sql{
-	width: 95%;
-}
-
-.ptInputCell {
-	width: 60px; 
-	border: 1px solid #ccc;
-	text-align: center:
-}
-.ptInput {
-	width: 2em;
-	text-align: center;
-}
-.picked {
-    background-color: yellow;
-}
-
-.show-for-large-only-col,
-.show-for-mid-up,
-.show-for-mid-up-col {
-	display: none;
-}
-
-
-/* Mid Sized Media Query */
-@media only screen and (min-width: 550px){
-	
-	#mainlogo{
-		padding-top: 5px;
-		max-width:250px;
-	}
-
-	.show-for-mid-up {
-		display: inline-block;	
-	}
-	.show-for-mid-up-col {
-		display: table-cell;
-	}
-	.show-for-small-only {
-		display: none;
-	}
-	
-}
-
-/* Large Screen Size */
-@media only screen and (min-width: 800px) {
-
-	.show-for-large-only-col {
-		display: table-cell;
-	}
-	.show-for-small-only {
-		display: none;
-	}
-	
-}
-@media only screen and (max-width: 550px) {
-	
-	.show-for-mid-up, .show-for-mid-up-col, .show-for-large-only-col{
-		display: none;
-		
-	}
-	
-	#navcontainer_login {
-		font-size: .65em;
-	}
-    .tblLeagueGames {
-        font-size: .9em;
-    }
-}
-
+body{
+	margin: 0px;
+	font-family: Arial;
+}
+td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #000000}
+a {  color: #000000; text-decoration: none}
+a:hover {  color: #0000FF; text-decoration: underline}
+a:active {  color: #0000FF; text-decoration: underline}
+input { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #000000 }
+select { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #000000 }
+H1 {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 25px; color: #000000}
+
+H2 {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 25px; color: #ffffff}
+.input-box{ color: #000000; background: #ffffff; border: #000 solid 1px }
+.buttonSytle {
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-size: 11px;
+  background-color: #cccccc;
+  border: 1px solid #000000;
+  cursor: hand;
+}
+
+#mainheader{
+	width: 100%;
+	text-align: center;
+	background-color: #000;
+	margin: 0px;
+	padding: 0px;
+	border: 0px solid red;
+}
+#maincontent{
+	max-width: 1024px;
+	text-align: center;
+	background-color: #fff;
+	margin: auto;
+	border: 1px solid red;
+}
+#mainfooter{
+	width: 100%;
+	text-align: center;
+	background-color: #eee;
+}
+#mainlogo{
+	margin-top:0px;
+	max-width:200px;
+	height: auto;
+
+}
+#navcontainer {
+	background-color: #ffd520;
+	margin: 0px;
+	text-align: center;
+			border: 0px solid blue;
+
+}
+
+
+#navcontainer ul, #navcontainer_footer ul {
+	margin: 0px;
+	padding: .5em;
+}
+#navlist li, #navcontainer_footer li{
+display: inline;
+list-style-type: none;
+padding-right: .5em;
+padding-left: .5em;
+}
+
+#navlist li a{
+	color: #000;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: bold;
+}
+#navlist li a:hover {
+	color: #fff;
+}
+#navcontainer_footer li a {
+	color: white;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: bold;
+}
+#navcontainer_footer li a:hover {
+	color: #aaa;
+}
+
+#navcontainer_footer {
+	background-color: #444;
+	margin: 0px;
+	text-align: center;
+	border: 0px solid blue;
+	font-size: .85em;
+}
+#navcontainer_login {
+	background-color: #000;
+	margin: 0px;
+	padding: 3px;
+	text-align: right;
+	font-size: .9em;
+	font-weight: bold;
+	color: #ddd;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+#navcontainer_login a{
+	color: #bbb;
+}
+#navcontainer_login a:HOVER{
+	color: #000;
+}
+#rosterGrid {
+	max-width: 550px;
+}
+#missingMessage{
+border: 0px solid #bbb;
+ max-width:300px;
+ margin: auto;
+}
+
+.mainContent {
+	border: 1px solid red;
+	max-width: 97%;
+	min-height: 200px;
+	margin: auto;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+}
+#holeInformation{
+	text-align: center;
+}
+.lblHoleInfo{
+	font-weight: bold;
+}
+
+.selectedWeek {
+	background-color: #ccc;
+	font-weight: bold;
+	font-size: 1.1em;
+	padding: 2px;
+}
+#scheduleView {
+	max-width:500px;
+	margin-left:auto;
+	margin-right:auto;
+
+}
+#lineups{
+	 text-align: center;
+	 border-spacing: 0px;
+	 font-weight: normal;
+	 overflow: hidden;
+	 font-size: .75em;
+}
+#lineups .heading{
+	 background-color: #ffd520;
+	 color: white;
+	 text-align: center;
+}
+#lineups td{
+	padding: 1px;
+}
+#userLogin {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding: 0px;
+	border: 0px solid #ccc;
+	
+}
+#loginTable {
+	border: 1px solid #ccc;
+	border-spacing: 0px;
+	
+}
+
+.selectContainer {
+	width: 200px;
+}
+
+.total {
+	border-right: 1px solid #bbb;
+}
+.btGames {
+    margin: auto;
+    margin-top: 10px;
+    font-size: .9em;
+    display: inline-block;
+    text-align: center;
+    max-width: 550px;
+}
+.btGame {
+  border: 1px solid #ccc;
+  display:inline-block;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 3px;
+  min-width: 55px;
+}
+.btGameHdr{
+  background-color: #ffd520;
+  color:white;
+  padding-right:2px;
+  padding-left: 2px;
+}
+.btTeam{
+  float: left;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.btScore{
+  float: right;
+  margin-right: 2px;
+}
+
+.ldGroup {
+    margin: auto;
+    margin-top: 10px;
+    font-size: .7em;
+    display: inline-block;
+    text-align: center;
+    max-width: 600px;
+}
+.ldPosition {
+  border: 1px solid #ccc;
+  display:inline-block;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 3px;
+  min-width: 125px;
+}
+.ldPosLine {
+	min-height:15px;
+}
+.ldPosHdr{
+  background-color: #ffd520;
+  color:white;
+  font-weight: bold;
+  font-size: 1.05em;
+  padding: 4px;
+  
+}
+.ldPosTeam{
+  float: left;
+  margin-left: 2px;
+  margin-right: 2px;
+  min-width: 35px;
+  
+}
+.ldPosName{
+  float: left;
+  margin-left: 2px;
+  margin-right: 4px;
+}
+.ldPosPts{
+  float: right;
+  margin-right: 2px;
+}
+
+.clear {
+  clear: both;
+}
+.negativeBalance {
+    color: red;
+}
+.positiveBalance {
+    color: #3c3;
+}
+
+.lineupMessage {
+	font-size: .9em;
+}
+
+.configuration {
+	width: 250px;
+	padding: 3px;
+	margin: 3px;
+	border: 1px solid #ccc;
+	display: inline-block;
+}
+legend {
+	font-size: 11pt;
+}
+label.field {
+	text-align: right;
+	width: 55px;
+	float: left;
+	font-weight: bold;
+}
+.lineupSet{
+	background-color: #9f9;
+}
+.lineupNotSet{
+  background-color: #fff;
+  min-width: 225px;
+}
+.playerSelected{
+	background-color: #ffc;
+}
+.configuration input {
+	float: left;
+	text-align: center;
+	width: 50px;
+}
+.configuration p {
+	clear: both;
+	padding: 5px;
+}
+#tables div {
+	display: inline-block;
+	padding-right: 5px;
+}
+#sql{
+	width: 95%;
+}
+
+.ptInputCell {
+	width: 60px; 
+	border: 1px solid #ccc;
+	text-align: center:
+}
+.ptInput {
+	width: 2em;
+	text-align: center;
+}
+.picked {
+    background-color: yellow;
+}
+
+.show-for-large-only-col,
+.show-for-mid-up,
+.show-for-mid-up-col {
+	display: none;
+}
+
+
+/* Mid Sized Media Query */
+@media only screen and (min-width: 550px){
+	
+	#mainlogo{
+		padding-top: 5px;
+		max-width:250px;
+	}
+
+	.show-for-mid-up {
+		display: inline-block;	
+	}
+	.show-for-mid-up-col {
+		display: table-cell;
+	}
+	.show-for-small-only {
+		display: none;
+	}
+	
+}
+
+/* Large Screen Size */
+@media only screen and (min-width: 800px) {
+
+	.show-for-large-only-col {
+		display: table-cell;
+	}
+	.show-for-small-only {
+		display: none;
+	}
+	
+}
+@media only screen and (max-width: 550px) {
+	
+	.show-for-mid-up, .show-for-mid-up-col, .show-for-large-only-col{
+		display: none;
+		
+	}
+	
+	#navcontainer_login {
+		font-size: .65em;
+	}
+    .tblLeagueGames {
+        font-size: .9em;
+    }
+}
+

@@ -1,14 +1,14 @@
-
-
-
-$(document).ready(function() {
-
-		
-		
-
-    $( "#mainlogo" ).click(function() {
-        alert('test');
-        return false;
-    });
-
-});
+
+
+
+$(document).ready(function() {
+
+		
+		
+
+    $( "#mainlogo" ).click(function() {
+        alert('test');
+        return false;
+    });
+
+});

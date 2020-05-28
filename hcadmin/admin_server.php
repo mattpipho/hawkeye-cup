@@ -129,6 +129,7 @@ function getGolfers(){
 	echo json_encode($return);
 }
 
+
 function getTeeTimes(){
 		
 	$round_id = $_POST["round_id"];
@@ -137,12 +138,10 @@ function getTeeTimes(){
 
 	$file = 'log_file.txt';
 	$content = time() . " getTeeTimes \n";
-//	file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
 
   $sql_query = "select * " .
                "from round_tee_times " . 
                "where round_id = '" . $round_id . "'" ;
-//file_put_contents($file, $sql_query . '/n', FILE_APPEND | LOCK_EX);
 
   $result = mysql_query($sql_query) or die(mysql_error());
     if ($result) {
@@ -153,7 +152,6 @@ function getTeeTimes(){
 				$sql_query_golfers = "select * from tee_time_golfers " .
 				                     "where round_id = '" . $round_id . "' " .
 				                     "  and tee_time_id = '" . $tee_time["tee_time_id"] . "'";
-//file_put_contents($file, $sql_query_golfers . '/n', FILE_APPEND | LOCK_EX);
 
 				$result2 = mysql_query($sql_query_golfers) or die(mysql_error());
 			 
@@ -173,6 +171,7 @@ function getTeeTimes(){
 				
 				 mysql_free_result($result2);	
 			}
+            
     }
     mysql_free_result($result);	
 
@@ -180,7 +179,6 @@ function getTeeTimes(){
 	$return["json"] = json_encode($return);
 	echo json_encode($return);
 }
-
 
 
 function saveGolfer(){

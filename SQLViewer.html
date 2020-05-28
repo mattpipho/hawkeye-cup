@@ -1,54 +1,54 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hawkeye Cup - Admin</title>
-    <link rel="stylesheet" href="app.css"> 
-    
-<SCRIPT LANGUAGE="JavaScript">
-
-</SCRIPT>
-
-</head>
-<body>
-
-<br>
-<div id="tables">
-<div>courses</div><div>course_detail</div><div>golfer</div><div>round_course</div><div>round_score</div><div>round_tee_times</div><div>tee_time_golfers</div><div>tournament_golfer</div><div>tournament_information</div><div>tournament_rounds</div><div>tournament_team</div>
-</div>
-<form name=sqlentry action="SQLViewer.php" method=post>
-  <textarea id=sql name=sql cols=60 rows=8></textarea>
-  <input type=submit>
-</form>
-<br>
-<?php echo 'SQL Statement: '.$sql;?>
-
-<table border=1 bordercolor=aaaaaa cellspacing=0 cellpadding=2>
- <tr>
-<?php
-$numCols = $res['NumberOfFields'];
-$colNames = $res['FieldNames'];
-for($i=0;$i<$numCols;$i++){
- echo '<td bgcolor=black><font color=white><b>'.$colNames[$i].'</b></font></td>';
-} ?>
- </tr>
-<?php
-$rowNum = $res['NumberOfRows'];
-$colNames = $res['FieldNames'];
-for($j=0;$j<$rowNum;$j++){
- echo '<tr>';
- for($i=0;$i<$numCols;$i++){
- 	if($res[$j.$colNames[$i]]==''){
- 		echo '<td>&nbsp;</td>';
- 	} else {
- 		echo '<td nowrap>'.$res[$j.$colNames[$i]].'</td>';
- 	}
- }
- echo '</tr>';
-} ?>
-</table>
-
-
-</body>
-</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hawkeye Cup - Admin</title>
+    <link rel="stylesheet" href="app.css"> 
+    
+<SCRIPT LANGUAGE="JavaScript">
+
+</SCRIPT>
+
+</head>
+<body>
+
+<br>
+<div id="tables">
+<div>courses</div><div>course_detail</div><div>golfer</div><div>round_course</div><div>round_score</div><div>round_tee_times</div><div>tee_time_golfers</div><div>tournament_golfer</div><div>tournament_information</div><div>tournament_rounds</div><div>tournament_team</div>
+</div>
+<form name=sqlentry action="SQLViewer.php" method=post>
+  <textarea id=sql name=sql cols=60 rows=8></textarea>
+  <input type=submit>
+</form>
+<br>
+<?php echo 'SQL Statement: '.$sql;?>
+
+<table border=1 bordercolor=aaaaaa cellspacing=0 cellpadding=2>
+ <tr>
+<?php
+$numCols = $res['NumberOfFields'];
+$colNames = $res['FieldNames'];
+for($i=0;$i<$numCols;$i++){
+ echo '<td bgcolor=black><font color=white><b>'.$colNames[$i].'</b></font></td>';
+} ?>
+ </tr>
+<?php
+$rowNum = $res['NumberOfRows'];
+$colNames = $res['FieldNames'];
+for($j=0;$j<$rowNum;$j++){
+ echo '<tr>';
+ for($i=0;$i<$numCols;$i++){
+ 	if($res[$j.$colNames[$i]]==''){
+ 		echo '<td>&nbsp;</td>';
+ 	} else {
+ 		echo '<td nowrap>'.$res[$j.$colNames[$i]].'</td>';
+ 	}
+ }
+ echo '</tr>';
+} ?>
+</table>
+
+
+</body>
+</html>
