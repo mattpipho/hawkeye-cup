@@ -1,9 +1,13 @@
 <html>
-<body>
-<form action="admin_server.php" method="POST">
-<input name=action type=text />
-<input name=tournament_id value="1"/>
-<input type=submit value=submit/>
-</form>
-</body>
+	<body>
+		<form action="admin_server.php" method="POST">
+			<label for="action">action</label>
+			<input id="action" name="action" type="text" />
+			<label for="round_id">round_id</label>
+			<input id="round_id" name="round_id" value="1" />
+			<label for="tournament_id">tournament_id</label>
+			<input id="tournament_id" name="tournament_id" value="1" />
+			<input type="submit" value="submit" />
+		</form>
+	</body>
 </html>

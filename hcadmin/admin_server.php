@@ -45,27 +45,27 @@ function getRounds(){
                "from tournament_rounds  " . 
                "where tournament_id = '" . TOURNAMENT_ID . "' order by round_name asc" ;
 
-  $result = mysql_query($sql_query) or die(mysql_error());
-    if ($result) {
-      while ($row = mysql_fetch_array($result)) {
+	$result = $mysqli->query($sql_query);   
+	if ($result->num_rows !== 0) {
+		while ($row = $result->fetch_assoc()) {
         $round["round_id"] = $row["round_id"];
 				$round["round_name"] = $row["round_name"];
 				$return["rounds"][]= $round;
 			}
     }
-    mysql_free_result($result);	
+    mysqli_free_result($result);	
 
 		$sql_query = "select active_round " .
                "from tournament_information  " . 
                "where tournament_id = '" . TOURNAMENT_ID . "'" ;
 
-  	$result = mysql_query($sql_query) or die(mysql_error());
-    if ($result) {
-      if ($row = mysql_fetch_array($result)) {
+	$result = $mysqli->query($sql_query);   
+	if ($result->num_rows !== 0) {
+		if ($row = $result->fetch_assoc()) {
         $return["active_round"]= $row["active_round"];
 			}
     }
-    mysql_free_result($result);	
+    mysqli_free_result($result);	
 
 	
 	$return["json"] = json_encode($return);
@@ -85,15 +85,15 @@ function getCourseInfo(){
                "from round_course a join course_detail b on a.course_id = b.course_id " . 
                "where a.round_id = " . $round_id;
 
-  $result = mysql_query($sql_query) or die(mysql_error());
-    if ($result) {
-      while ($row = mysql_fetch_array($result)) {
+	$result = $mysqli->query($sql_query);   
+	if ($result->num_rows !== 0) {
+		while ($row = $result->fetch_assoc()) {
         $holes["h" . $row["hole"]]["number"] = $row["hole"];
         $holes["h" . $row["hole"]]["par"] = $row["par"];
         $holes["h" . $row["hole"]]["handicap"] = $row["handicap"];
       }
     }
-    mysql_free_result($result);
+    mysqli_free_result($result);
 	
 	$return["holes"] = $holes;
 	
@@ -109,9 +109,9 @@ function getGolfers(){
                "     on a.golfer_id = b.golfer_id " . 
                "where tournament_id = '" . TOURNAMENT_ID . "'" ;
 
-  $result = mysql_query($sql_query) or die(mysql_error());
-    if ($result) {
-      while ($row = mysql_fetch_array($result)) {
+	$result = $mysqli->query($sql_query);   
+	if ($result->num_rows !== 0) {
+		while ($row = $result->fetch_assoc()) {
         $golfer["id"] = $row["golfer_id"];
 				$golfer["username"] = $row["username"];
 				$golfer["last_name"] = $row["last_name"];
@@ -122,7 +122,7 @@ function getGolfers(){
 				$return["golfers"][]= $golfer;
 			}
     }
-    mysql_free_result($result);	
+    mysqli_free_result($result);	
 
 	
 	$return["json"] = json_encode($return);
@@ -143,9 +143,9 @@ function getTeeTimes(){
                "from round_tee_times " . 
                "where round_id = '" . $round_id . "'" ;
 
-  $result = mysql_query($sql_query) or die(mysql_error());
-    if ($result) {
-      while ($row = mysql_fetch_array($result)) {
+	$result = $mysqli->query($sql_query);   
+	if ($result->num_rows !== 0) {
+		while ($row = $result->fetch_assoc()) {
         $tee_time["tee_time_id"] = $row["tee_time_id"];
 				$tee_time["tee_time"] = $row["tee_time"];
 				
@@ -153,10 +153,9 @@ function getTeeTimes(){
 				                     "where round_id = '" . $round_id . "' " .
 				                     "  and tee_time_id = '" . $tee_time["tee_time_id"] . "'";
 
-				$result2 = mysql_query($sql_query_golfers) or die(mysql_error());
-			 
-		    if ($result2) {
-		      while ($row2 = mysql_fetch_array($result2)) {				                   
+				$result2 = $mysqli->query($sql_query_golfers);   
+				if ($result2->num_rows !== 0) {
+				while ($row2 = $result2->fetch_assoc()) {			                   
 						$golfer["golfer_id"] = $row2["golfer_id"];
 						//file_put_contents($file, 'gid' . $golfer["golfer_id"] . '/n', FILE_APPEND | LOCK_EX);
                 
@@ -169,11 +168,11 @@ function getTeeTimes(){
 				unset($golfers);
 				unset($tee_time);
 				
-				 mysql_free_result($result2);	
+				 mysqli_free_result($result2);	
 			}
             
     }
-    mysql_free_result($result);	
+    mysqli_free_result($result);	
 
 	
 	$return["json"] = json_encode($return);
@@ -200,8 +199,7 @@ function saveGolfer(){
 			                " WHERE golfer_id = '" . $golfer_id . "' " .
 			                "   AND tournament_id = '" . TOURNAMENT_ID . "'";
        //file_put_contents($file, time() .  $updateString . "\n", FILE_APPEND | LOCK_EX);
-	
-			$result = mysql_query($updateString) or die(mysql_error());
+	   $result = $mysqli->query($updateString);   
 	
 	
 	} catch (Exception $e) {
@@ -234,8 +232,7 @@ function addTeeTimeGolfer(){
 			                "'" . $golfer_id . "', " .
 			                "'" . $round_id . "')";
        //file_put_contents($file, time() .  $insertString . "\n", FILE_APPEND | LOCK_EX);
-	
-			$result = mysql_query($insertString) or die(mysql_error());
+	   $result = $mysqli->query($insertString);   
 	
 	
 	} catch (Exception $e) {
@@ -268,9 +265,8 @@ function removeTeeTimeGolfer(){
 			                "golfer_id = '" . $golfer_id . "' AND " .
 			                "round_id = '" . $round_id . "'";
        //file_put_contents($file, time() .  $deleteString . "\n", FILE_APPEND | LOCK_EX);
-	
-			$result = mysql_query($deleteString) or die(mysql_error());
-	
+	   $result = $mysqli->query($deleteString);   
+
 	
 	} catch (Exception $e) {
 	
@@ -299,9 +295,8 @@ function saveActiveRound(){
 			                "   set active_round = '" . $round_id . "' " .
 			                " WHERE tournament_id = '" . TOURNAMENT_ID . "'";
        //file_put_contents($file, time() .  $updateString . "\n", FILE_APPEND | LOCK_EX);
-	
-			$result = mysql_query($updateString) or die(mysql_error());
-	
+	   $result = $mysqli->query($updateString);   
+
 	
 	} catch (Exception $e) {
 	
@@ -317,6 +312,7 @@ function saveActiveRound(){
 function getScores(){
 
 	try{
+
 	$round_id = $_POST["round_id"];
 			
   include('dbconnect.php');
@@ -334,9 +330,9 @@ function getScores(){
   
 file_put_contents($file, $sql_query . '/n', FILE_APPEND | LOCK_EX);
 
-  $result = mysql_query($sql_query) or die(mysql_error());
-    if ($result) {
-      while ($row = mysql_fetch_array($result)) {
+	$result = $mysqli->query($sql_query);   
+	if ($result->num_rows !== 0) {
+	while ($row = $result->fetch_assoc()) {
         $round["golfer_id"] = $row["golfer_id"];
 				$round["round_id"] = $round_id;
 				$round["tee_time_id"] = $row["tee_time_id"];
@@ -348,13 +344,12 @@ file_put_contents($file, $sql_query . '/n', FILE_APPEND | LOCK_EX);
 				                     "  and golfer_id = '" . $round["golfer_id"] . "'";
 file_put_contents($file, $sql_query_scores . '/n', FILE_APPEND | LOCK_EX);
 
-				$result2 = mysql_query($sql_query_scores) or die(mysql_error());
-			 
-		    if ($result2) {
-		      while ($row2 = mysql_fetch_array($result2)) {				                   
+				$result2 = $mysqli->query($sql_query_scores);   
+				if ($result2->num_rows !== 0) {
+				while ($row2 = $result2->fetch_assoc()) {			                   
 						$score["hole"] = $row2["hole"];
 						$score["score"] = $row2["score"];
-						file_put_contents($file, 'gid' . $golfer["golfer_id"] . '/n', FILE_APPEND | LOCK_EX);
+						//file_put_contents($file, 'gid' . $golfer["golfer_id"] . '/n', FILE_APPEND | LOCK_EX);
                 
 						$scores[] = $score;
 					}
@@ -365,10 +360,10 @@ file_put_contents($file, $sql_query_scores . '/n', FILE_APPEND | LOCK_EX);
 				unset($scores);
 				unset($round);
 				
-				 mysql_free_result($result2);	
+				 mysqli_free_result($result2);	
 			}
     }
-    mysql_free_result($result);	
+    mysqli_free_result($result);	
 
 	} catch (Exception $e) {
 	
