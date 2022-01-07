@@ -27,32 +27,42 @@ include('SQLViewer.html');
 
 function getSQLResults($sql) {
 
+
+
   $res;
 
-  include('dbconnect.php');
-  
-  $result = mysql_query($sql) or die(mysql_error());
-    if ($result) {
-      $y=mysql_num_fields($result);
 
-      $res['NumberOfFields'] = $y;
-      for($i=0;$i<$y;$i++){
-         $fieldNames[] = mysql_field_name($result, $i);
-      }
-      $res['FieldNames'] = $fieldNames; 
-     
-$x = 0;
-       while ($row = mysql_fetch_array($result)) {
-         
-          for($c=0;$c<$y;$c++){
-             $res[$x.$fieldNames[$c]] = $row[$fieldNames[$c]]; 
-          }
-         $x = $x+1;
-       }
-       $res['NumberOfRows'] = $x;
+
+  include('dbconnect.php');
+
+ 
+  $result = $mysqli->query($sql); 
+  
+  while ($property = mysqli_fetch_field($result)) {
+    $fieldNames[] = $property->name;
+  }
+  $res['NumberOfFields'] = count($fieldNames);
+  $res['FieldNames'] = $fieldNames;
+  
+  if ($result->num_rows !== 0) {
+    $x = 0;
+
+    while ($row = $result->fetch_assoc()) {
+      for($c=0;$c<count($fieldNames);$c++){
+        $res[$x.$fieldNames[$c]] = $row[$fieldNames[$c]]; 
+
+     }
+
+    $x = $x+1;
     }
-    mysql_free_result($result);
+
+     $res['NumberOfRows'] = $x;
+  }
+  
+    mysqli_free_result($result);
+
     return $res;
+
 }
 
 function executeUpdate($sql) {
