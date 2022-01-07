@@ -67,19 +67,32 @@ function getSQLResults($sql) {
 
 function executeUpdate($sql) {
 
+
+
   include('dbconnect.php');
 
-for($statement= strtok($sql, ';'); 
-     $statement !== false; 
-     $statement=strtok(";")) {
-
-   $InsertResult = mysql_query($statement) or die(mysql_error());
-
-}
 
 
+    for($statement= strtok($sql, ';'); 
+
+        $statement !== false; 
+
+        $statement=strtok(";")) {
+
+        try {
+          echo $statement;
+
+          $InsertResult = $mysqli->query($statement);
+
+          echo 'Result ' . $InsertResult;
+        } catch (Exception $e) {
+          echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
 
 
+
+
+    }
 
 }
 
