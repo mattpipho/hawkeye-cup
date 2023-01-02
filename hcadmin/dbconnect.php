@@ -23,6 +23,11 @@ function db_login(){
     mysql_select_db("hawkeyecup");
 } */
 
+if($_SERVER['SERVER_NAME'] === 'hawkeyecup.com'){
+	$mysqli = new mysqli("peepsdb.cmtf57ipmlnh.us-east-2.rds.amazonaws.com:3306", "hawkeyecup", "GoHawks1!", "hawkeyecup");
+} else {
+	$mysqli = new mysqli("localhost", "hawkeyecup", "GoHawks1!", "hawkeyecup");
+}
 
 $mysqli = new mysqli("localhost", "hawkeyecup", "GoHawks1!", "hawkeyecup");
 if ($mysqli->connect_errno) {
