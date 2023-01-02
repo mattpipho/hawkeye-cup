@@ -29,7 +29,6 @@ if($_SERVER['SERVER_NAME'] === 'hawkeyecup.com'){
 	$mysqli = new mysqli("localhost", "hawkeyecup", "GoHawks1!", "hawkeyecup");
 }
 
-$mysqli = new mysqli("localhost", "hawkeyecup", "GoHawks1!", "hawkeyecup");
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
