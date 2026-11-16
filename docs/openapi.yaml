@@ -1,0 +1,378 @@
+openapi: 3.1.0
+info:
+  title: Hawkeye Cup Legacy Frontend API
+  version: 1.0.0
+  description: |-
+    Contract for the legacy form-encoded APIs called by the public golf frontend
+    (`server.php`) and the admin frontend (`hcadmin/admin_server.php`). This
+    documents the current wire format, including its legacy `json` properties:
+    these properties contain JSON serialized as a string inside the outer JSON
+    response. Consumers currently parse that string separately.
+
+    This is a description of observed frontend-consumed operations, not a
+    recommendation for the replacement API. The PHP handlers do not consistently
+    return HTTP error statuses or validate requests. The `username` login action
+    is only a lookup/allowlist check, not secure authentication; a client cookie
+    must not be treated as an authorization credential.
+servers:
+  - url: https://hawkeyecup.com
+    description: Production site origin; the current frontend uses relative URLs.
+tags:
+  - name: Public golf frontend
+    description: Calls made to `server.php` by the golf scoring and scorecard UI.
+  - name: Admin frontend
+    description: Calls made to `hcadmin/admin_server.php` by the golf admin UI.
+paths:
+  /server.php:
+    post:
+      tags: [Public golf frontend]
+      operationId: publicGolfAction
+      summary: Dispatch a public golf frontend action
+      description: |-
+        The PHP endpoint dispatches on the form field `action`. All actions share
+        this URL and HTTP method. The request body is URL-encoded form data;
+        `scores` in `savescores` is submitted by jQuery using bracketed names such
+        as `scores[0][id]` and `scores[0][score]`.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/PublicLoginRequest'
+                - $ref: '#/components/schemas/RoundInfoRequest'
+                - $ref: '#/components/schemas/CourseInfoRequest'
+                - $ref: '#/components/schemas/PublicGolfersRequest'
+                - $ref: '#/components/schemas/AllGolfersRequest'
+                - $ref: '#/components/schemas/PublicScoresRequest'
+                - $ref: '#/components/schemas/SaveHoleScoresRequest'
+                - $ref: '#/components/schemas/RoundScorecardRequest'
+            encoding:
+              scores:
+                style: form
+                explode: true
+      responses:
+        '200':
+          description: |-
+            JSON response from the selected action. The shape depends on `action`;
+            most data is nested as JSON text in the `json` property.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/LoginResponse'
+                  - $ref: '#/components/schemas/RoundInfoResponse'
+                  - $ref: '#/components/schemas/CourseInfoResponse'
+                  - $ref: '#/components/schemas/PublicGolfersResponse'
+                  - $ref: '#/components/schemas/AllGolfersResponse'
+                  - $ref: '#/components/schemas/PublicScoresResponse'
+                  - $ref: '#/components/schemas/SaveResponse'
+                  - $ref: '#/components/schemas/RoundScorecardResponse'
+        default:
+          description: The legacy PHP endpoint does not define consistent error responses.
+  /hcadmin/admin_server.php:
+    post:
+      tags: [Admin frontend]
+      operationId: adminGolfAction
+      summary: Dispatch an admin frontend action
+      description: |-
+        The PHP endpoint dispatches on the form field `action`. All admin actions
+        share this URL and HTTP method. The admin frontend sends URL-encoded form
+        data. `rounds` is also called by the public frontend to populate its
+        round selector.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/AdminLoginRequest'
+                - $ref: '#/components/schemas/AdminGolfersRequest'
+                - $ref: '#/components/schemas/AdminRoundsRequest'
+                - $ref: '#/components/schemas/SaveActiveRoundRequest'
+                - $ref: '#/components/schemas/TeeTimesRequest'
+                - $ref: '#/components/schemas/AddTeeTimeGolferRequest'
+                - $ref: '#/components/schemas/RemoveTeeTimeGolferRequest'
+                - $ref: '#/components/schemas/AdminScoresRequest'
+                - $ref: '#/components/schemas/SaveGolferRequest'
+      responses:
+        '200':
+          description: |-
+            JSON response from the selected action. The shape depends on `action`;
+            most data is nested as JSON text in the `json` property.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/LoginResponse'
+                  - $ref: '#/components/schemas/AdminGolfersResponse'
+                  - $ref: '#/components/schemas/RoundsResponse'
+                  - $ref: '#/components/schemas/TeeTimesResponse'
+                  - $ref: '#/components/schemas/AdminScoresResponse'
+                  - $ref: '#/components/schemas/SaveResponse'
+        default:
+          description: The legacy PHP endpoint does not define consistent error responses.
+components:
+  schemas:
+    PublicLoginRequest:
+      type: object
+      required: [action, username]
+      properties:
+        action: { const: login }
+        username: { type: string, description: Golfer username to look up. }
+    RoundInfoRequest:
+      type: object
+      required: [action]
+      properties:
+        action: { const: roundinfo }
+        tournament_id:
+          type: integer
+          description: Sent by the frontend; the PHP handler currently uses its configured tournament ID instead.
+    CourseInfoRequest:
+      type: object
+      required: [action, round_id]
+      properties:
+        action: { const: courseinfo }
+        round_id: { type: integer }
+    PublicGolfersRequest:
+      type: object
+      required: [action, round_id, username]
+      properties:
+        action: { const: golfers }
+        round_id: { type: integer }
+        username: { type: string, description: Scorekeeper username. }
+    AllGolfersRequest:
+      type: object
+      required: [action]
+      properties:
+        action: { const: allGolfers }
+        usnername:
+          type: string
+          description: The frontend sends this misspelled field; the current PHP handler ignores it.
+    PublicScoresRequest:
+      type: object
+      required: [action, round_id]
+      properties:
+        action: { const: scores }
+        round_id: { type: integer }
+    SaveHoleScoresRequest:
+      type: object
+      required: [action, round_id, hole, scores]
+      properties:
+        action: { const: savescores }
+        round_id: { type: integer }
+        hole: { type: integer, minimum: 1, maximum: 18 }
+        scores:
+          type: array
+          description: Scores submitted for this hole; the client serializes these as PHP/jQuery bracketed form fields.
+          items:
+            type: object
+            required: [id, score]
+            properties:
+              id: { type: integer, description: Golfer ID. }
+              score: { type: integer }
+    RoundScorecardRequest:
+      type: object
+      required: [action, round_id]
+      properties:
+        action: { const: getRoundScores }
+        round_id: { type: integer }
+    AdminLoginRequest:
+      type: object
+      required: [action, username]
+      properties:
+        action: { const: login }
+        username: { type: string }
+    AdminGolfersRequest:
+      type: object
+      required: [action]
+      properties:
+        action: { const: golfers }
+    AdminRoundsRequest:
+      type: object
+      required: [action]
+      properties:
+        action: { const: rounds }
+        usnername:
+          type: string
+          description: The frontend sends this misspelled field; the current PHP handler ignores it.
+    SaveActiveRoundRequest:
+      type: object
+      required: [action, round_id]
+      properties:
+        action: { const: saveActiveRound }
+        round_id: { type: integer }
+    TeeTimesRequest:
+      type: object
+      required: [action, round_id]
+      properties:
+        action: { const: getTeeTimes }
+        round_id: { type: integer }
+    AddTeeTimeGolferRequest:
+      type: object
+      required: [action, round_id, golfer_id, tee_time_id]
+      properties:
+        action: { const: addTeeTimeGolfer }
+        round_id: { type: integer }
+        golfer_id: { type: integer }
+        tee_time_id: { type: integer }
+    RemoveTeeTimeGolferRequest:
+      type: object
+      required: [action, round_id, golfer_id, tee_time_id]
+      properties:
+        action: { const: removeTeeTimeGolfer }
+        round_id: { type: integer }
+        golfer_id: { type: integer }
+        tee_time_id: { type: integer }
+    AdminScoresRequest:
+      type: object
+      required: [action, round_id]
+      properties:
+        action: { const: getScores }
+        round_id: { type: integer }
+    SaveGolferRequest:
+      type: object
+      required: [action, golfer_id, handicap, team]
+      properties:
+        action: { const: saveGolfer }
+        golfer_id: { type: integer }
+        handicap: { type: number }
+        team:
+          oneOf:
+            - { type: integer, enum: [0, 1] }
+            - { type: string, enum: ['0', '1'] }
+    LoginResponse:
+      type: object
+      description: Login lookup result; this is not an authenticated session or token.
+      properties:
+        message: { type: string, enum: ['User Found', 'User Not Found'] }
+        userfound: { type: integer, enum: [0, 1] }
+        json: { type: string, description: JSON-encoded copy of the response fields. }
+    RoundInfoResponse:
+      type: object
+      properties:
+        round_id: { type: integer }
+        round_name: { type: string }
+        json: { type: string, description: JSON-encoded copy of the response fields. }
+    CourseInfoResponse:
+      type: object
+      properties:
+        holes:
+          type: object
+          description: Object keyed by h1 through h18.
+          additionalProperties:
+            $ref: '#/components/schemas/HoleInfo'
+        json: { type: string, description: JSON-encoded copy of the response fields. }
+    HoleInfo:
+      type: object
+      properties:
+        number: { type: integer }
+        par: { type: integer }
+        handicap: { type: integer }
+    PublicGolfersResponse:
+      type: object
+      properties:
+        message: { type: string, description: SUCCESSFUL when a tee time with golfers is found; otherwise a failure message. }
+        A: { $ref: '#/components/schemas/ScorekeeperGolfer' }
+        B: { $ref: '#/components/schemas/ScorekeeperGolfer' }
+        C: { $ref: '#/components/schemas/ScorekeeperGolfer' }
+        D: { $ref: '#/components/schemas/ScorekeeperGolfer' }
+        json: { type: string, description: JSON-encoded copy of the response fields. }
+    ScorekeeperGolfer:
+      type: object
+      properties:
+        golfer_id: { type: integer }
+        first_name: { type: string }
+        last_name: { type: string }
+        team: { type: string }
+        handicap: { type: number }
+    AllGolfersResponse:
+      type: object
+      properties:
+        golfers:
+          type: array
+          items: { $ref: '#/components/schemas/Golfer' }
+        json: { type: string, description: JSON-encoded copy of the response fields. }
+    Golfer:
+      type: object
+      properties:
+        id: { type: integer }
+        golfer_id: { type: integer }
+        username: { type: string }
+        first_name: { type: string }
+        last_name: { type: string }
+        team: { type: [string, integer] }
+        handicap: { type: [string, number] }
+        level: { type: [string, 'null'] }
+        seed: { type: [string, 'null'] }
+    PublicScoresResponse:
+      type: object
+      description: The inner JSON is a map keyed by golfer ID, then hole number, containing score objects.
+      properties:
+        json: { type: string, description: JSON-encoded score map; may encode null when no scores exist. }
+    SaveResponse:
+      type: object
+      properties:
+        json: { type: string, const: Successful }
+    RoundScorecardResponse:
+      type: object
+      properties:
+        json:
+          type: string
+          description: JSON-encoded object containing `scores` and `course_detail`.
+    RoundsResponse:
+      type: object
+      properties:
+        rounds:
+          type: array
+          items:
+            type: object
+            properties:
+              round_id: { type: integer }
+              round_name: { type: string }
+        active_round: { type: integer }
+        json: { type: string, description: JSON-encoded copy of the response fields. }
+    AdminGolfersResponse:
+      type: object
+      properties:
+        golfers:
+          type: array
+          items: { $ref: '#/components/schemas/Golfer' }
+        json: { type: string, description: JSON-encoded copy of the response fields. }
+    TeeTimesResponse:
+      type: object
+      properties:
+        tee_times:
+          type: array
+          items:
+            type: object
+            properties:
+              tee_time_id: { type: integer }
+              tee_time: { type: string, description: Legacy database tee-time value; exact format depends on stored data. }
+              golfers:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    golfer_id: { type: integer }
+        json: { type: string, description: JSON-encoded copy of the response fields; may encode an empty/null result. }
+    AdminScoresResponse:
+      type: object
+      properties:
+        scores:
+          type: array
+          items:
+            type: object
+            properties:
+              golfer_id: { type: integer }
+              round_id: { type: integer }
+              tee_time_id: { type: integer }
+              scores:
+                type: array
+                items: { $ref: '#/components/schemas/HoleScore' }
+        json: { type: string, description: JSON-encoded copy of the response fields; may encode an empty/null result. }
+    HoleScore:
+      type: object
+      properties:
+        hole: { type: integer, minimum: 1, maximum: 18 }
+        score: { type: integer }
